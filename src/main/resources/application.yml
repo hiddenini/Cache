@@ -1,0 +1,10 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: redis-cache
+  redis:
+    host: 192.168.1.50
+    database: 8
+    port: 6379
+    password: bizvane

@@ -4,7 +4,7 @@ spring:
   application:
     name: redis-cache
   redis:
-    host: 192.168.1.50
-    database: 8
+    host: 192.168.2.18
+    database: 1
     port: 6379
     password: bizvane

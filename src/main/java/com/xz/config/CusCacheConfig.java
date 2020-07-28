@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +35,10 @@ public class CusCacheConfig {
         config.put("ZJW_CLIENT_CACHE", new CacheConfig(60 * 1000, 0));
         config.put("ZJW_ACCESS_TOKEN_CACHE", new CacheConfig(60 * 1000, 0));
 
-        return new RedissonSpringCacheManager(redissonClient, config, JsonJacksonCodec.INSTANCE);
+        RedissonSpringCacheCustomManager cacheManager = new RedissonSpringCacheCustomManager(redissonClient, config, JsonJacksonCodec.INSTANCE);
+        cacheManager.setTtl(Duration.ofMinutes(3));
+        return cacheManager;
+
+        //return new RedissonSpringCacheManager(redissonClient, config, JsonJacksonCodec.INSTANCE);
     }
 }
